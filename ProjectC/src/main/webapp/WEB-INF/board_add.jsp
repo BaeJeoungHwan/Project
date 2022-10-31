@@ -15,7 +15,7 @@
 	<div id="app">
 		<div class="app-container">
 			<div class="h1box">
-				<h1> 게시글 등록 </h1>
+				<h1> 게시글 등록s </h1>
 			</div>
 			<div class="projects-section">
 				<div class="projects-section-header">
