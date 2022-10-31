@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mentoring.ProjectC.mapper.MentorMapper">	
+	<select id="selectGetMentor" resultType="com.mentoring.ProjectC.model.t3_Mentor">
+        SELECT * , 
+            (SELECT ROUND(AVG(Review_score), 2) FROM t3_Review WHERE Member_num = #{MemberNum}) AS avg
+        FROM t3_Mentor s
+        INNER JOIN t3_Member m on m.Member_num = s.Member_num
+        WHERE s.Member_num = #{MemberNum}
+    </select>
+    
+	<select id="selectReviewList" resultType="com.mentoring.ProjectC.model.t3_Review">
+        SELECT *
+        FROM t3_Review
+        WHERE Member_num = #{MemberNum}
+    </select>
+
+    <select id="insertReview" resultType="com.mentoring.ProjectC.model.t3_Review">
+        INSERT INTO t3_Review
+            (Member_num, Review_m, Review_score, Review_writer)
+        VALUES
+            (#{MemberNum}, #{review}, #{score}, #{writer})
+    </select>
+    
+</mapper>

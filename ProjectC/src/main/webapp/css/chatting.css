@@ -1,0 +1,21 @@
+body{
+	background-color: #ececed;
+	width : 430px;
+	hegith : 299px;
+    margin-top:55px;
+    
+}
+
+.phonebox{
+	width : 88%;
+	border: 1px dashed black;
+	text-align: center;
+	background-color: white;
+	padding-bottom:10px;
+	
+}
+.numberbox{
+}
+.btnbox{
+	margin-left:10px;
+}

@@ -1,0 +1,174 @@
+div{
+	margin:0;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+
+a:visited{color:black;}
+
+#memberinfo {
+
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	width:100%;
+	height:400px;
+}
+#info {
+	width:60%;
+	height:100%;
+	background-color:#f1f3f5;
+	border-bottom:1px solid #868e96;
+}
+#memberprofile-box {
+	display:flex;
+	width:80%;
+	margin:auto;
+	margin-top:70px;
+}
+#memberprofile-box-info {
+	width:500px;
+	margin-left:20px;
+	
+	}
+
+#memberprofile-box-info1 {
+	font-size:30px;
+	height:50%;
+	border-bottom: 2px solid #868e96;
+}
+
+#memberprofile-box-info2 {
+	margin-top:7px;
+	height:40%;
+}
+#memberevent-box{
+	display:flex;
+	justify-content:space-between;
+	text-align:center;
+	margin-top:30px;
+}
+
+#memberevent-box .event-box{
+	width:30%;
+}
+
+#memberevent-box1{
+	width:40%;
+}
+
+#event-box1-menu li{
+	border-bottom:1.5px solid #868e96;
+	width:70%;
+	font-size:15px;
+	margin:auto;
+	margin-top:20px;
+}
+#event-box2-menu li{
+	border-bottom:1.5px solid #868e96;
+	width:70%;
+	margin:auto;
+	margin-top:20px;
+}
+
+#memberevent-box3{
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	justify-content:space-evenly;
+}
+
+.Blank{
+	height:50px;
+	width:100%;
+}
+
+#Mypage{
+	height:1000px;
+	width:60%;
+	margin:auto;
+}
+
+#Mypage-sideBar{
+	height:750px;
+	width:26%;
+	float: left;
+	
+}
+#Mypage-sideBar-menu li{
+	margin:0;
+	font-size:17px;
+	font-weight:600;
+}
+
+#Mypage-sideBar-menu li:nth-child(1){
+	font-size:20px;
+}
+
+#Mypage-sideBar-menu li a{
+	display: block;
+	padding: 20px;
+}
+
+.right-icon{
+	visibility: hidden;
+	height:20px;
+	width:20px;
+	margin-right:15px;
+}
+
+#Mypage-sideBar-menu li a:hover{
+	color:green;
+}
+
+#Mypage-sideBar-menu li a:hover > .right-icon{
+	visibility: visible;
+}
+
+#Mypage-sideBar-menu li:nth-child(1):hover{
+	background-color:#D8F3DC;
+}
+#Mypage-sideBar-menu li:nth-child(1) a:hover{
+	color:white;
+}
+
+
+	
+#Mypage-main {
+	width:70%;
+	float:right;
+	height:750px;
+	background-color:pink;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

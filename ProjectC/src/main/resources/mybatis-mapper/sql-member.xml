@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mentoring.ProjectC.mapper.MemberMapper">
+	<select id="selectMemberList" resultType="com.mentoring.ProjectC.model.t3_Member">	
+		SELECT 
+			*
+		FROM
+			t3_Member M
+			INNER JOIN t3_Region R on M.Re_num = R.Re_num
+		WHERE Member_num = #{membernum}
+	</select>
+	
+	<insert id="insertMember" parameterType="hashmap">
+		INSERT INTO t3_Member
+			(Member_id, Member_passwd, Member_email, Re_num, Member_gender, Member_phone, Member_name, Member_select, Member_point)
+		VALUES
+			(#{id}, #{password}, #{email}, #{region}, #{gender},  #{phone}, #{name}, #{select}, '1000')
+	</insert>
+	
+	<select id="selectPurchaseList" resultType="com.mentoring.ProjectC.model.t3_Member">
+		SELECT Mentee_name, Find_name, Member_name AS Mentor_name, Order_time
+		FROM t3_Member m
+			INNER JOIN (SELECT Member_name AS Mentee_name, Find_name, Mentor_num, Order_time
+						FROM t3_Member m
+							INNER JOIN (SELECT o.Member_num AS Mentee_num, f.Member_num AS Mentor_num, Find_name, o.Find_num, o.Order_time
+										FROM t3_Order o
+											INNER JOIN t3_Find f ON o.Find_num = f.Find_num) i
+			ON m.Member_num = i.Mentee_num) j
+			ON m.Member_num = j.Mentor_num;
+	</select>
+	
+	<update id="updateMember" parameterType="hashmap">
+		UPDATE t3_Member
+		SET Member_email = #{MemberEmail}, Member_phone = #{MemberPhone}
+		WHERE Member_id = #{MemberId};
+	</update>	
+	
+	<delete id="deleteMember" parameterType="hashmap">
+		DELETE 
+		FROM t3_Member
+		WHERE Member_num = #{membernum};
+	</delete>		
+   <!-- 중복확인 -->
+   <select id="selectId" parameterType="String" resultType="int">
+        SELECT COUNT(Member_id) 
+        FROM t3_Member
+        WHERE Member_id = #{id}
+    </select>
+    
+    <insert id="insertMentor" parameterType="hashmap">
+        INSERT INTO t3_Mentor
+        	(Member_num, Mentor_career, Mentor_duty, Mentor_company, Mentor_talk, Mentor_intr, Job_num, Mentor_img)
+        VALUES
+        	(#{memnum}, #{career}, #{duty}, #{company}, #{opentalk}, #{introduce}, #{job}, #{img});
+    </insert>
+    	
+	<select id="getmemnum" resultType="String">
+        SELECT 
+            Member_num
+        FROM
+            t3_Member
+        WHERE Member_id = #{id}
+    </select>
+    
+    <select id="selectPurchaseListsell" resultType="com.mentoring.ProjectC.model.t3_Member">
+        SELECT Mentee_name, Find_name, Member_name AS Mentor_name, Order_time
+        FROM t3_Member m
+            INNER JOIN (SELECT Member_name AS Mentee_name, Find_name, Mentor_num, Order_time
+                        FROM t3_Member m
+                            INNER JOIN (SELECT o.Member_num AS Mentee_num, f.Member_num AS Mentor_num, Find_name, o.Find_num, o.Order_time
+                                        FROM t3_Order o
+                                            INNER JOIN t3_Find f ON o.Find_num = f.Find_num
+                                            WHERE f.Member_num = #{membernum}) i
+            ON m.Member_num = i.Mentee_num) j
+            ON m.Member_num = j.Mentor_num;
+    </select>
+
+    <select id="selectPurchaseListbuy" resultType="com.mentoring.ProjectC.model.t3_Member">
+        SELECT Mentee_name, Find_name, Member_name AS Mentor_name, Order_time
+        FROM t3_Member m
+            INNER JOIN (SELECT Member_name AS Mentee_name, Find_name, Mentor_num, Order_time
+                        FROM t3_Member m
+                            INNER JOIN (SELECT o.Member_num AS Mentee_num, f.Member_num AS Mentor_num, Find_name, o.Find_num, o.Order_time
+                                        FROM t3_Order o
+                                            INNER JOIN t3_Find f ON o.Find_num = f.Find_num
+                                            WHERE o.Member_num = #{membernum}) i
+            ON m.Member_num = i.Mentee_num) j
+            ON m.Member_num = j.Mentor_num;
+    </select>
+    
+    <select id="pointList" resultType="com.mentoring.ProjectC.model.t3_Member">
+     SELECT m.Member_id, m.Member_name, m.Member_point, p.Point_app, p.Point_date, m.Member_num
+     FROM t3_Pointorder p
+     INNER JOIN t3_Member m ON m.Member_num = p.Member_num
+    </select>
+
+    <update id="savePoint" parameterType="hashmap">
+    UPDATE t3_Member 
+    SET Member_point = Member_point + #{point}
+    WHERE Member_num = #{memberNum}
+    </update>
+
+        <delete id="pointremove" parameterType="hashmap">
+        DELETE
+        FROM t3_Pointorder
+        WHERE Member_num = #{memberNum}
+    </delete>
+
+        <insert id="orderpoint" parameterType="hashmap">
+        INSERT INTO t3_Pointorder
+            (Member_num, Point_app, Point_date)
+        VALUES
+            (#{membernum}, #{orderpoint}, now())
+    </insert>
+    
+    <update id="minuspoint" parameterType="hashmap">
+	    UPDATE t3_Member 
+	    SET Member_point = Member_point - 1000
+	    WHERE Member_num = #{membernum}
+    </update>
+    
+</mapper>

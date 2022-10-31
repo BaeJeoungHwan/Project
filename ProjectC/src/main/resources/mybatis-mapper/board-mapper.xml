@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mentoring.ProjectC.mapper.BoardMapper">
+	<select id="selectBoardList" resultType="com.mentoring.ProjectC.model.t3_Board">	
+		SELECT 
+			B.Board_num, B.Member_num, M.Member_id, B.Board_t, B.Board_m, B.Board_date, B.Board_cnt, B.Board_commentcnt AS commentCnt
+		FROM
+			t3_Board B
+			INNER JOIN t3_Member M ON B.Member_num = M.Member_num
+		ORDER BY B.Board_num DESC
+		
+	</select>
+	
+	<select id="selectGetBoard" parameterType="hashmap" resultType="com.mentoring.ProjectC.model.t3_Board">
+		SELECT 
+			B.Board_num, B.Member_num, M.Member_id, B.Board_t, B.Board_m, B.Board_date, B.Board_cnt
+		FROM
+			t3_Board B
+			INNER JOIN t3_Member M ON B.Member_num = M.Member_num	
+		WHERE
+			B.Board_num = #{BoardNum}
+	</select>
+	
+	<update id="updateCnt" parameterType="hashmap" >	
+		UPDATE t3_Board
+		SET Board_cnt = Board_cnt + 1
+		WHERE Board_num = #{BoardNum}
+	</update>
+	
+	<update id="updateCommentcnt" parameterType="hashmap" >	
+		UPDATE t3_Board
+		SET Board_commentcnt = Board_commentcnt + 1 
+		WHERE Board_num = #{boardNum}
+	</update>
+	
+	<select id="selectMentorList" resultType="com.mentoring.ProjectC.model.t3_Mentor">
+        SELECT M.Member_id, R.avg
+        FROM t3_Mentor Me
+        	INNER JOIN t3_Member M on Me.Member_num = M.Member_num
+        	INNER JOIN (
+        			SELECT AVG(Review_score) AS avg, Member_num
+		  			FROM t3_Review R 
+		  			GROUP BY Member_num) R ON Me.Member_num = R.Member_num
+		ORDER BY avg DESC
+		LIMIT 10;
+    </select>
+	
+	<select id="selectactivityBoardList" resultType="com.mentoring.ProjectC.model.t3_Board">
+		SELECT *
+		FROM t3_Board
+		WHERE Member_num = #{membernum}
+	</select>
+	
+	<insert id="insertBoard" parameterType="hashmap" >	
+		INSERT INTO t3_Board
+			(Board_t, Board_m, Board_date, Member_Num, Board_cnt, Board_commentcnt)
+		VALUES
+			(#{title}, #{content}, Now(), #{membernum}, 0, 0)
+	</insert>
+	
+	<delete id="deleteBoard" parameterType="hashmap">	
+		DELETE t3_Board 
+		FROM 
+			t3_Board
+		WHERE 
+			Board_num = #{BoardNum};
+	</delete>
+	
+	<delete id="deleteBoardcomment" parameterType="hashmap">	
+		DELETE 
+		FROM 
+			t3_Comment
+		WHERE 
+			Board_num = #{BoardNum};
+	</delete>
+	
+	<select id="selectRegionList" resultType="com.mentoring.ProjectC.model.t3_Region">
+	    SELECT 
+	        Re_num, Re_name
+	    FROM
+	        t3_Region
+	    ORDER BY Re_num
+    </select>
+    
+    <select id="selectJobList" resultType="com.mentoring.ProjectC.model.t3_Region">
+	    SELECT 
+	        Job_num, Job_name
+	    FROM
+	        t3_Job
+	    ORDER BY Job_num
+    </select>
+    
+    <select id="selectCommentList" resultType="com.mentoring.ProjectC.model.t3_Comment">
+        SELECT C.Comment_m, C.Comment_date
+        FROM t3_Comment C
+        	INNER JOIN t3_Board B ON C.Board_num = B.Board_num
+        WHERE B.Board_num = #{BoardNum}
+    </select>
+    
+    <insert id="insertComment" parameterType="hashmap" >	
+		INSERT INTO t3_Comment
+			(Board_num, Comment_m, Comment_date)  
+		VALUES
+			(#{boardNum}, #{comment}, NOW())
+	</insert>
+	
+</mapper>

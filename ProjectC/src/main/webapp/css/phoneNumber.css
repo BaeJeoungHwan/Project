@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'Godo';
+    font-style: normal;
+    font-weight: 400;
+    src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Godo';
+	font-style: normal;
+	font-weight: 700;
+	src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoB.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoB.woff') format('woff');
+}
+
+.godo * {
+	font-family: 'Godo', sans-serif;
+}
+
+* {
+    font-family: 'Godo', sans-serif;
+}
+
+body{
+	background-color: #ececed;
+	width : 380px;
+	hegith : 299px;
+    margin-top:55px;
+    text-align: center;
+}
+
+.phonebox{
+	width : 99%;
+	border: 2px solid #DEE2E6;
+	text-align: center;
+	background-color: #FFF;
+	padding-bottom:10px;
+}
+
+.numberbox{
+	
+}
+
+.box {
+	text-align-last: center;
+}
+
+.btnbox{
+	margin-top:6px;
+	background: #081C15;
+	width: 30%;
+	font-size: 17px;
+	height: 40px;
+	color: #fff;
+	text-decoration: none;
+	border: none;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	box-shadow: #7c7676 0 4px 0;
+	cursor: pointer;
+	text-align: center;
+}

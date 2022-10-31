@@ -1,0 +1,185 @@
+@font-face {
+    font-family: 'ONE-Mobile-POP';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.profile{
+	font-family: 'ONE-Mobile-POP';
+	background : white;
+	width : 1200px;
+	height : 720px;
+	display : flex;
+	margin : auto;
+	margin-top: 3%;
+	border: solid 2px;
+    padding: 5px;
+    box-shadow: 5px 10px 0 0 rgb(0 0 0 / 25%);
+    border-radius: 10px;
+    display: flex;
+    justify-content : center;
+}
+.proimg{
+	width : 200px;
+	height: 200px;
+ 	overflow: hidden;
+ 	display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin : 5px;
+}
+.detailtext{
+	width : 1000px;
+	height : 240px;
+	background-color : white;
+	margin-left: 20px;
+}
+tbody{
+	width: 1000px;
+	height : 200px;
+    padding: 10px;
+    text-align: left;
+}
+td{
+	margin-left : 10px;
+}
+th{
+	margin-right : 10px;
+}
+.talkbtn {
+    width: 100px;
+    height: 30px;
+    color: white;
+    background: black;
+    box-shadow: 5px 10px 0 0 rgb(0 0 0 / 25%);
+    float : right;
+    margin-right: 20px;
+}
+.intro{
+	background: white;
+    width: 1000px;
+    height: 150px;
+    justify-content: center;
+    margin-top : 30px;
+}
+.li1{
+	list-style : none;
+	font-size : 23px;
+    padding: 5px;
+
+}
+.proli{
+	font-size : 15px;
+	text-decoration : none;
+	margin-bottom: 16px;
+}
+
+.textarea{
+	width: 980px;
+    height: 145px;
+    border-radius: 5px;
+    border: solid 2px;
+    font-size: 20px;
+    padding : 10px;
+    margin-bottom: 20px;
+    box-shadow: 3px 10px 0 0 rgb(0 0 0 / 25%);
+    overflow : auto;
+}
+.comment{
+	background: white;
+    width: 980px;
+    height: 240px;
+    margin-top: 30px;
+    border: solid 2px;
+    border-radius: 10px;
+    padding: 10px;
+    overflow : auto;
+}
+.comment::-webkit-scrollbar-track{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+.comment::-webkit-scrollbar{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+.comment::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #8d8686;
+}
+.commentbtn {
+    width: 100px;
+    height: 30px;
+    color: white;
+    background: black;
+    box-shadow: 5px 10px 0 0 rgb(0 0 0 / 25%);
+    float : right;
+    margin-right: 20px;
+    margin-top : 20px;
+}
+legend{
+	font-size : 25px;
+}
+fieldset{
+	margin-bottom : 10px;
+	box-shadow: 2px 6px 0 0 rgb(0 0 0 / 25%);
+}
+
+.commentinput {
+    width: 100%;
+    height: 30px;
+    font-size: 18px;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 5px;
+}
+.div11{
+	display: inline-block;
+	height : 150px;
+	overflow: hidden;
+	border-radius: 20%;
+	width : 200px;
+	margin-top: 5px;
+}
+.div12{
+	display: inline-block;
+	margin-left : 20px;
+}
+
+div13 {
+    display: inline-block;
+    float: right;
+    margin-top: 30px;
+}
+.selectbox{
+    width: 80px;
+    text-align: center;
+    background: #605b5b;
+    color: white;
+    box-shadow: 2px 2px 0 0 rgb(0 0 0 / 25%);
+}
+.selectbtn{
+    width: 80px;
+    text-align: center;
+    background: #605b5b;
+    color: white;
+    box-shadow: 2px 2px 0 0 rgb(0 0 0 / 25%);
+    border: solid 1px #605b5b;
+    height: 22px;
+    font-size: 13px;
+}
+table {
+	width : 100%;
+	height : 100%;
+}
+tr th {
+	background : #8d8686;
+	color : white;
+}
+tr td {
+	text-align : left;
+	margin-top : 5px;
+}

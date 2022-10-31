@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mentoring.ProjectC.mapper.FindMapper">	
+	<select id="selectFindList" parameterType="hashmap" resultType="com.mentoring.ProjectC.model.t3_Find">	
+		SELECT f.Find_num, f.Find_name, f.Find_m, m.Member_num, m.Member_id, r.Re_name, j.Job_name
+		FROM t3_Find f
+			INNER JOIN t3_Member m on f.Member_num = m.Member_num
+			INNER JOIN t3_Mentor t on m.Member_num = t.Member_num
+			INNER JOIN t3_Job j ON j.Job_num = t.Job_num
+			INNER JOIN t3_Region r ON r.Re_num = m.Re_num
+		WHERE 1=1 
+		<if test='regionList != null and regionList != ""'>
+			AND r.Re_num IN (<foreach collection="regionList" item="item" separator=" , ">#{item.ReNum}</foreach>)
+		</if>
+		<if test='jobList != null and jobList != ""'>
+			AND j.Job_num IN (<foreach collection="jobList" item="item" separator=" , ">#{item.JobNum}</foreach>)
+		</if>
+		ORDER BY f.Find_num desc
+		LIMIT #{startNum}, #{lastNum}
+	</select>
+	
+	<select id="selectFindCnt" parameterType="hashmap" resultType="int">	
+		SELECT COUNT(*)
+		FROM t3_Find f
+			INNER JOIN t3_Member m on f.Member_num = m.Member_num
+			INNER JOIN t3_Mentor t on m.Member_num = t.Member_num
+			INNER JOIN t3_Job j ON j.Job_num = t.Job_num
+			INNER JOIN t3_Region r ON r.Re_num = m.Re_num
+		WHERE 1=1 
+		<if test='regionList != null and regionList != ""'>
+			AND r.Re_num IN (<foreach collection="regionList" item="item" separator=" , ">#{item.ReNum}</foreach>)
+		</if>
+		<if test='jobList != null and jobList != ""'>
+			AND j.Job_num IN (<foreach collection="jobList" item="item" separator=" , ">#{item.JobNum}</foreach>)
+		</if>
+	</select>
+	
+	<select id="selectGetFind" parameterType="hashmap" resultType="com.mentoring.ProjectC.model.t3_Find">
+		SELECT f.Find_num, f.Find_name, f.Find_m, m.Member_num, m.Member_id, m.Re_num
+		FROM t3_Find f
+			INNER JOIN t3_Member m on f.Member_num = m.Member_num	
+		WHERE
+			f.Find_num = #{FindNum}
+	</select>
+	
+	<insert id="insertFind" parameterType="hashmap" >	
+		INSERT INTO t3_Find
+			(Find_name, Find_m, Member_num)  
+		VALUES
+			(#{title}, #{content}, #{membernum})
+	</insert>
+	
+	<delete id="deleteFind" parameterType="hashmap">	
+		DELETE FROM 
+			t3_Find 
+		WHERE 
+			Find_Num  = #{FindNum}
+	</delete>
+	
+	<insert id="orderinsert" parameterType="hashmap" >
+        INSERT INTO t3_Order
+            (Member_num, Find_num, Order_time) 
+        VALUES
+            (#{membernum}, #{FindNum}, now())
+    </insert>
+    
+    <select id="checkPoint" parameterType="hashmap" resultType="int">
+        SELECT COUNT(*)
+        FROM t3_Member 
+        WHERE
+            Member_num = #{membernum} AND Member_point >= 1000
+    </select>
+    <update id="updateFind" parameterType="hashmap">
+        UPDATE t3_Find
+        set 
+        Find_name = #{FindName}, 
+        Find_m = #{FindM}
+        Where Find_Num =  #{FindNum};
+    </update>
+    
+</mapper>

@@ -1,0 +1,129 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'Godo';
+    font-style: normal;
+    font-weight: 400;
+    src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoM.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Godo';
+	font-style: normal;
+	font-weight: 700;
+	src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoB.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/godo/Godo/GodoB.woff') format('woff');
+}
+
+
+#Qheader{
+	display:flex;
+	align-items:center;
+	margin-left:110px;
+	height:100px;	
+	
+}
+
+#Qheader h4 {
+	font-size:2.5em;
+}
+
+#Qmain{
+	width:90%;
+	margin:auto;
+	display:flex;
+	gap:30px;
+}
+
+
+.question_Title {
+	display: flex;
+    align-items: center;
+	height:60px;
+	font-size:25px;
+	color:black;
+	margin-top:40px;
+	margin-bottom:30px;
+}
+
+.question_Title p{
+	margin-left:64px;
+	font-size:30px;
+}
+
+table {
+	 border-top: 2px solid #444444;
+     border-collapse: collapse;
+     width:80%;
+}
+
+th, td {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+  }
+
+
+a:hover {
+	color: #ADB5BD;
+	cursor: pointer;
+}
+
+#question_table {
+	font-size:22px;
+	padding:10px;
+	margin-left:6%;	
+	letter-spacing:4px;
+	line-height:40px;  
+	
+}
+
+#question_box {
+	width:1100px;
+	min-height:700px;
+	background-color:white;
+	border-radius:30px;
+	color: #081C15;
+	height:100px;
+	
+}
+
+.phone{
+	width:400px;
+	height:100px;
+	border-radius:20px;
+	border: 1px solid #ececed;
+}
+
+
+
+
+
+
+.ticket {
+	color: #081C15;
+}
+
+summary {
+    font-size: 23px;
+    font-weight: bold;
+    margin: -.5em -.5em 0;
+    padding: .5em;
+    cursor: pointer;
+}
+
+details[open] {
+    padding: .5em;
+}
+
+details[open] p {
+    border: 1px solid #aaa;
+    border-radius:10px;
+    margin-bottom: .5em;
+    background-color: #e1e1e1;
+    padding: .3em 1em;
+    font-size: 18px;
+}
+
+summary::marker {
+    display: none;
+    content: "";
+}
